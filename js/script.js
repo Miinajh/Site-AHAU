@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initScrollEffects();
   initStatsCounter();
   initContactForm();
-  initCustomCursor();
+  initTeamAnimation();
 });
 
 function initMobileMenu() {
@@ -95,16 +95,6 @@ function initContactForm() {
   }
 }
 
-function initCustomCursor() {
-  const cursor = document.getElementById('custom-cursor');
-
-  if (cursor && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
-    document.addEventListener('mousemove', (e) => {
-      cursor.style.left = `${e.clientX}px`;
-      cursor.style.top = `${e.clientY}px`;
-    });
-  }
-}
 
 const logo = document.querySelector(".logo");
 
@@ -119,3 +109,20 @@ document.addEventListener("mousemove", (e)=>{
     `;
 
 });
+
+function initTeamAnimation() {
+  const members = document.querySelectorAll('.team-member');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, index) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          entry.target.classList.add('visible');
+        }, index * 100); // efeito cascata
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  members.forEach(member => observer.observe(member));
+}
