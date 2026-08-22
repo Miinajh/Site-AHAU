@@ -4,7 +4,8 @@ document.addEventListener('DOMContentLoaded', () => {
   initStatsCounter();
   initContactForm();
   initTeamAnimation();
-});
+  initQuoteRotator();
+}); 
 
 function initMobileMenu() {
   const menuToggle = document.querySelector('.menu-toggle');
@@ -125,4 +126,38 @@ function initTeamAnimation() {
   }, { threshold: 0.15 });
 
   members.forEach(member => observer.observe(member));
+
+  function initQuoteRotator() {
+  const quotes = [
+    { text: "Só o melhor é bom o suficiente.", author: "Ole Kirk Christiansen" },
+    { text: "A criatividade é a inteligência se divertindo.", author: "Albert Einstein" },
+    { text: "Sozinhos vamos mais rápido, juntos vamos mais longe.", author: "Provérbio africano" },
+    { text: "O sucesso é a soma de pequenos esforços repetidos todos os dias.", author: "Robert Collier" }
+  ];
+
+  const textEl = document.getElementById('quote-text');
+  const authorEl = document.getElementById('quote-author');
+  if (!textEl || !authorEl) return;
+
+  let index = 0;
+
+  function showQuote(i) {
+    textEl.classList.remove('visible');
+    authorEl.classList.remove('visible');
+
+    setTimeout(() => {
+      textEl.textContent = `"${quotes[i].text}"`;
+      authorEl.textContent = `— ${quotes[i].author}`;
+      textEl.classList.add('visible');
+      authorEl.classList.add('visible');
+    }, 600);
+  }
+
+  showQuote(index);
+
+  setInterval(() => {
+    index = (index + 1) % quotes.length;
+    showQuote(index);
+  }, 5000);
+}
 }
