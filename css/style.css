@@ -673,7 +673,7 @@ section {
   font-size: 1.1rem;
   margin-bottom: var(--spacing-sm);
 }
-
+}
 .social-icon {
   display: inline-flex;
   align-items: center;
@@ -698,35 +698,41 @@ section {
    Quote Rotator
    ========================================== */
 .quote-section {
-  background-color: var(--color-bg-dark);
+  background-color: var(--color-primary);
   color: var(--color-text-light);
   padding: var(--spacing-xl) 0;
   text-align: center;
 }
 
 .quote-text {
-  font-size: 1.8rem;
+  font-family: 'Playfair Display', serif;
   font-style: italic;
+  font-size: 2rem;
   font-weight: 600;
+  color: var(--color-text-light);
   max-width: 800px;
   margin: 0 auto var(--spacing-sm);
   min-height: 2.4em;
-  opacity: 0;
-  transition: opacity 0.8s ease;
-}
-
-.quote-text.visible {
-  opacity: 1;
 }
 
 .quote-author {
+  font-family: 'Playfair Display', serif;
   font-size: 1.1rem;
-  color: var(--color-secondary);
-  opacity: 0;
-  transition: opacity 0.8s ease;
+  letter-spacing: 1px;
+  color: var(--color-text-light);
+  opacity: 0.9;
 }
 
-.quote-author.visible {
-  opacity: 1;
+.quote-cursor {
+  display: inline-block;
+  width: 2px;
+  background-color: var(--color-text-light);
+  margin-left: 2px;
+  animation: blink 0.8s infinite;
 }
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
 }
+

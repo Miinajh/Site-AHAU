@@ -96,21 +96,6 @@ function initContactForm() {
   }
 }
 
-
-const logo = document.querySelector(".logo");
-
-document.addEventListener("mousemove", (e)=>{
-
-    const x = (e.clientX/window.innerWidth-.5)*12;
-    const y = (e.clientY/window.innerHeight-.5)*12;
-
-    logo.style.transform = `
-        translate(${x}px, ${y}px)
-        scale(1)
-    `;
-
-});
-
 function initTeamAnimation() {
   const members = document.querySelectorAll('.team-member');
 
@@ -127,6 +112,8 @@ function initTeamAnimation() {
 
   members.forEach(member => observer.observe(member));
 
+}
+
   function initQuoteRotator() {
   const quotes = [
     { text: "Só o melhor é bom o suficiente.", author: "Ole Kirk Christiansen" },
@@ -139,25 +126,46 @@ function initTeamAnimation() {
   const authorEl = document.getElementById('quote-author');
   if (!textEl || !authorEl) return;
 
-  let index = 0;
+  const typingSpeed = 60;   // velocidade digitando (ms por letra)
+  const deletingSpeed = 30; // velocidade apagando (ms por letra)
+  const pauseAfterTyping = 2500; // tempo parado depois de escrever
+  const pauseAfterDeleting = 400; // tempo parado depois de apagar
 
-  function showQuote(i) {
-    textEl.classList.remove('visible');
-    authorEl.classList.remove('visible');
+  let quoteIndex = 0;
+  let charIndex = 0;
+  let isDeleting = false;
 
-    setTimeout(() => {
-      textEl.textContent = `"${quotes[i].text}"`;
-      authorEl.textContent = `— ${quotes[i].author}`;
-      textEl.classList.add('visible');
-      authorEl.classList.add('visible');
-    }, 600);
+  function tick() {
+    const current = quotes[quoteIndex];
+    const fullText = `"${current.text}"`;
+
+    if (!isDeleting) {
+      // digitando
+      charIndex++;
+      textEl.textContent = fullText.substring(0, charIndex);
+      authorEl.textContent = charIndex === fullText.length ? `— ${current.author}` : '';
+
+      if (charIndex === fullText.length) {
+        isDeleting = true;
+        setTimeout(tick, pauseAfterTyping);
+        return;
+      }
+      setTimeout(tick, typingSpeed);
+    } else {
+      // apagando
+      charIndex--;
+      textEl.textContent = fullText.substring(0, charIndex);
+      authorEl.textContent = '';
+
+      if (charIndex === 0) {
+        isDeleting = false;
+        quoteIndex = (quoteIndex + 1) % quotes.length;
+        setTimeout(tick, pauseAfterDeleting);
+        return;
+      }
+      setTimeout(tick, deletingSpeed);
+    }
   }
 
-  showQuote(index);
-
-  setInterval(() => {
-    index = (index + 1) % quotes.length;
-    showQuote(index);
-  }, 5000);
-}
+  tick();
 }
