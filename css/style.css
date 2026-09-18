@@ -134,7 +134,7 @@ body {
   align-items: flex-end;
   justify-content: center;
   padding-bottom: var(--spacing-2xl);
-  background: url('https://i.postimg.cc/KvrPGZd5/equipe-ahau.jpg') no-repeat center center/cover;
+  background: url('https://i.postimg.cc/KvrPGZd5/equipe-ahau.jpg') no-repeat center 70%/cover;
 }
 
 .hero-content {
@@ -241,6 +241,12 @@ section {
   align-items: center;
 }
 
+.about-left {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
 .about-text p {
   margin-bottom: var(--spacing-md);
   font-size: 1.1rem;
@@ -254,11 +260,36 @@ section {
   box-shadow: 0 4px 20px rgba(0,0,0,0.1);
 }
 
-.about-btn {
-  margin-top: 20px;
-  display: inline-block;
+/* Contadores dentro do About */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-md);
 }
 
+.stat-item {
+  background-color: var(--color-bg);
+  border-radius: var(--radius-sm);
+  padding: var(--spacing-md) var(--spacing-xs);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.stat-number {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.stat-label {
+  font-size: 0.95rem;
+  color: var(--color-text-dark);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 500;
+}
 /* ==========================================
    Values Section
    ========================================== */
@@ -631,6 +662,10 @@ section {
   .about-content,
   .contact-content {
     grid-template-columns: 1fr;
+  }
+
+    .stats-grid {
+    grid-template-columns: repeat(3, 1fr);
   }
 
   .section-title {

@@ -60,7 +60,8 @@ function initStatsCounter() {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         const target = entry.target;
-        const finalValue = parseInt(target.getAttribute('data-target'));
+        const selector = target.getAttribute('data-count-selector');
+        const finalValue = document.querySelectorAll(selector).length;
         animateCounter(target, finalValue);
         observer.unobserve(target);
       }
