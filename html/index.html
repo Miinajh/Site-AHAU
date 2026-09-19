@@ -8,6 +8,12 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+  <script>
+  try {
+    var t = localStorage.getItem('ahau-theme');
+    if (t) document.documentElement.setAttribute('data-theme', t);
+  } catch (e) {}
+</script>
   <link rel="stylesheet" href="../css/style.css">
 
 </head>
@@ -33,6 +39,14 @@
       </button>
     </div>
   </header>
+   <div class="header-actions">
+        <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Ativar modo noturno" aria-pressed="false">
+          <i class="fas fa-moon"></i>
+        </button>
+        <button class="menu-toggle" aria-label="Toggle menu">
+          <i class="fas fa-bars"></i>
+        </button>
+    </div>
 
   <section home" class="hero">
     <div class="container">
@@ -74,7 +88,7 @@
         <img src="https://i.postimg.cc/5NQMqbGV/DSC-0152.jpg" alt="Foto da Equipe" loading="lazy">
       </div>
     </div>
-  </div>55
+  </div>1
 </section>
 
   <section id="values" class="values">
@@ -150,15 +164,7 @@
             <p>Robô autônomo capaz de seguir linhas utilizando sensores de cor.</p>
           </div>
         </div>
-           <div class="project-card">
-          <div class="project-image">
-            <img src="https://i.postimg.cc/prhWQqkx/Whats-App-Image-2025-09-30-at-18-57-29.jpg" alt="Projeto 2 seguidor de linha 7" loading="lazy">
-          </div>
-          <div class="project-info">
-            <h3>MACHOMAR</h3>
-            <h4>Equipe ---</h4>
-            <p>projeto MNR radiador de bambu para tartarugas.</p>
-          </div>
+
         </div>
       </div>
     </div>
@@ -201,7 +207,11 @@
             <p>3º lugar na fase regional-PB</p>
           </div>
         </div>
-        <div class="competition-card">
+         <a href="https://olimpo.robocup.org.br/storage/persons/999007fc-591d-436f-af39-5387c4c15599/events/a14f1aac-c28d-4095-a975-444943a52c2d/enrollment/files/lfZrLulvOknD4slDvlVNZFaZm4ZkNJ-metaTU5SMjAyNl9BcnRpZ29fQUhBVS5wZGY=-.pdf"
+           class="competition-card"
+           target="_blank"
+           rel="noopener noreferrer"
+           aria-label="Abrir artigo MACHOMAR em PDF">
           <div class="competition-icon">
             <i class="fas fa-award"></i>
           </div>
@@ -210,6 +220,7 @@
             <h3>MACHOMAR</h3>
             <p>Produção na MNR</p>
           </div>
+        </a>
         </div>
       </div>
     </div>
@@ -365,5 +376,17 @@
 
   
   <script src="../js/script.js"></script>
+  <div class="pdf-modal" id="pdfModal" hidden>
+  <div class="pdf-modal__content" role="dialog" aria-modal="true" aria-labelledby="pdfTitle">
+    <div class="pdf-modal__header">
+      <h4 id="pdfTitle"></h4>
+      <div class="pdf-modal__actions">
+        <a id="pdfNewTab" href="#" target="_blank" rel="noopener">Abrir em nova aba</a>
+        <button type="button" id="pdfClose" aria-label="Fechar">&times;</button>
+      </div>
+    </div>
+    <iframe id="pdfFrame" title="Visualizador de PDF"></iframe>
+  </div>
+</div>
 </body>
 </html>

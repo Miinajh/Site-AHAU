@@ -424,6 +424,13 @@ section {
   box-shadow: 0 10px 30px rgba(201, 95, 10, 0.3);
 }
 
+a.competition-card {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+
 .competition-icon {
   width: 70px;
   height: 70px;
@@ -771,3 +778,110 @@ section {
   51%, 100% { opacity: 0; }
 }
 
+/* ==========================================
+   Botão de tema
+   ========================================== */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.theme-toggle {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 2px solid var(--color-text-light);
+  background: none;
+  color: var(--color-text-light);
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all var(--transition-base);
+}
+
+.theme-toggle:hover {
+  background-color: var(--color-white);
+  border-color: var(--color-white);
+  color: var(--color-primary);
+}
+
+body,
+section,
+.footer {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* ==========================================
+   Modo noturno (laranja vira amarelo)
+   ========================================== */
+[data-theme="dark"] {
+  color-scheme: dark;
+
+  --color-primary: #ffdd57;
+  --color-primary-light: #ffe98a;
+  --color-text-dark: #ececf1;
+  --color-bg: #12121f;
+  --color-white: #1c1c2e;      /* fundo dos cards e seções */
+  --color-bg-dark: #0b0b14;    /* rodapé */
+  --color-shadow: rgba(0, 0, 0, 0.5);
+  --color-on-primary: #1a1a2e; /* texto sobre o amarelo */
+}
+
+/* Textos sobre fundo amarelo (header e frase) precisam ser escuros */
+[data-theme="dark"] .logo,
+[data-theme="dark"] .nav-link,
+[data-theme="dark"] .menu-toggle,
+[data-theme="dark"] .theme-toggle,
+[data-theme="dark"] .quote-section,
+[data-theme="dark"] .quote-text,
+[data-theme="dark"] .quote-author {
+  color: var(--color-on-primary);
+}
+
+[data-theme="dark"] .theme-toggle {
+  border-color: var(--color-on-primary);
+}
+
+[data-theme="dark"] .nav-link:hover,
+[data-theme="dark"] .nav-link.active,
+[data-theme="dark"] .theme-toggle:hover {
+  background-color: var(--color-white);
+  color: var(--color-primary);
+}
+
+[data-theme="dark"] .quote-cursor {
+  background-color: var(--color-on-primary);
+}
+
+/* Cinzas fixos do tema claro */
+[data-theme="dark"] .about-text p,
+[data-theme="dark"] .mission-text,
+[data-theme="dark"] .competition-info p {
+  color: #c4c4d2;
+}
+
+/* Brilhos laranja viram amarelos */
+[data-theme="dark"] .competition-card:hover {
+  box-shadow: 0 10px 30px rgba(255, 221, 87, 0.3);
+}
+
+[data-theme="dark"] .competition-card:hover .competition-icon,
+[data-theme="dark"] .value-item:hover .value-icon {
+  box-shadow: 0 5px 15px rgba(255, 221, 87, 0.4);
+}
+
+[data-theme="dark"] .footer-bottom {
+  border-top-color: rgba(255, 221, 87, 0.4);
+}
+
+[data-theme="dark"] .social-icon:hover {
+  color: var(--color-on-primary);
+}
+
+/* Campos de formulário */
+[data-theme="dark"] .contact-form input,
+[data-theme="dark"] .contact-form textarea {
+  background-color: var(--color-bg);
+  color: var(--color-text-dark);
+  border-color: #3a3a52;
+}

@@ -5,7 +5,35 @@ document.addEventListener('DOMContentLoaded', () => {
   initContactForm();
   initTeamAnimation();
   initQuoteRotator();
+  initThemeToggle();
 }); 
+
+function initThemeToggle() {
+  const toggle = document.getElementById('theme-toggle');
+  if (!toggle) return;
+
+  const root = document.documentElement;
+  const icon = toggle.querySelector('i');
+  const STORAGE_KEY = 'ahau-theme';
+
+  function applyTheme(theme) {
+    const isDark = theme === 'dark';
+    root.setAttribute('data-theme', theme);
+    toggle.setAttribute('aria-pressed', isDark);
+    toggle.setAttribute('aria-label', isDark ? 'Desativar modo noturno' : 'Ativar modo noturno');
+    icon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
+  }
+
+  let saved = null;
+  try { saved = localStorage.getItem(STORAGE_KEY); } catch (e) {}
+  applyTheme(saved === 'dark' ? 'dark' : 'light');
+
+  toggle.addEventListener('click', () => {
+    const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    applyTheme(next);
+    try { localStorage.setItem(STORAGE_KEY, next); } catch (e) {}
+  });
+}
 
 function initMobileMenu() {
   const menuToggle = document.querySelector('.menu-toggle');
