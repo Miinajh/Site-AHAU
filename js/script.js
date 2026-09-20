@@ -4,8 +4,8 @@ document.addEventListener('DOMContentLoaded', () => {
   initStatsCounter();
   initContactForm();
   initTeamAnimation();
-  initQuoteRotator();
   initThemeToggle();
+  initCountdown();
 }); 
 
 function initThemeToggle() {
@@ -133,7 +133,7 @@ function initTeamAnimation() {
       if (entry.isIntersecting) {
         setTimeout(() => {
           entry.target.classList.add('visible');
-        }, index * 100); // efeito cascata
+        }, index * 100); // efeito cascat
         observer.unobserve(entry.target);
       }
     });
@@ -143,58 +143,106 @@ function initTeamAnimation() {
 
 }
 
-  function initQuoteRotator() {
-  const quotes = [
-    { text: "Só o melhor é bom o suficiente.", author: "Ole Kirk Christiansen" },
-    { text: "A criatividade é a inteligência se divertindo.", author: "Albert Einstein" },
-    { text: "Sozinhos vamos mais rápido, juntos vamos mais longe.", author: "Provérbio africano" },
-    { text: "O sucesso é a soma de pequenos esforços repetidos todos os dias.", author: "Robert Collier" }
-  ];
 
-  const textEl = document.getElementById('quote-text');
-  const authorEl = document.getElementById('quote-author');
-  if (!textEl || !authorEl) return;
+  function initCountdown() {
+  const box = document.getElementById('countdown');
+  if (!box) return;
 
-  const typingSpeed = 60;   // velocidade digitando (ms por letra)
-  const deletingSpeed = 30; // velocidade apagando (ms por letra)
-  const pauseAfterTyping = 2500; // tempo parado depois de escrever
-  const pauseAfterDeleting = 400; // tempo parado depois de apagar
+  const target = new Date(box.dataset.date).getTime();
+  if (Number.isNaN(target)) {
+    console.warn('Contagem regressiva: data inválida em data-date.');
+    return;
+  }
 
-  let quoteIndex = 0;
-  let charIndex = 0;
-  let isDeleting = false;
+  const finished = document.getElementById('countdown-finished');
+  const days = document.getElementById('cd-days');
+  const hours = document.getElementById('cd-hours');
+  const minutes = document.getElementById('cd-minutes');
+  const seconds = document.getElementById('cd-seconds');
+  const pad = (n) => String(n).padStart(2, '0');
 
-  function tick() {
-    const current = quotes[quoteIndex];
-    const fullText = `"${current.text}"`;
+  function update() {
+    const total = Math.max(0, Math.floor((target - Date.now()) / 1000));
 
-    if (!isDeleting) {
-      // digitando
-      charIndex++;
-      textEl.textContent = fullText.substring(0, charIndex);
-      authorEl.textContent = charIndex === fullText.length ? `— ${current.author}` : '';
+    days.textContent = pad(Math.floor(total / 86400));
+    hours.textContent = pad(Math.floor((total % 86400) / 3600));
+    minutes.textContent = pad(Math.floor((total % 3600) / 60));
+    seconds.textContent = pad(total % 60);
 
-      if (charIndex === fullText.length) {
-        isDeleting = true;
-        setTimeout(tick, pauseAfterTyping);
-        return;
-      }
-      setTimeout(tick, typingSpeed);
-    } else {
-      // apagando
-      charIndex--;
-      textEl.textContent = fullText.substring(0, charIndex);
-      authorEl.textContent = '';
-
-      if (charIndex === 0) {
-        isDeleting = false;
-        quoteIndex = (quoteIndex + 1) % quotes.length;
-        setTimeout(tick, pauseAfterDeleting);
-        return;
-      }
-      setTimeout(tick, deletingSpeed);
+    if (total === 0) {
+      if (finished) finished.hidden = false;
+      clearInterval(timer);
     }
   }
 
-  tick();
+  const timer = setInterval(update, 1000);
+  update();
+}
+
+
+  function initPartnerForm() {
+  const modal = document.getElementById('partner-modal');
+  const openBtn = document.getElementById('open-partner-form');
+  const closeBtn = document.getElementById('partner-modal-close');
+  const form = document.getElementById('partner-form');
+  if (!modal || !openBtn || !form) return;
+
+  const status = document.getElementById('partner-status');
+  const button = document.getElementById('partner-submit');
+  const ENDPOINT = 'https://formsubmit.co/ajax/filhosdosol010@gmail.com';
+
+  // abrir e fechar a janela
+  openBtn.addEventListener('click', () => {
+    status.textContent = '';
+    status.className = 'form-status';
+    modal.showModal();
+  });
+
+  closeBtn.addEventListener('click', () => modal.close());
+
+  // clicar no fundo escuro, fora da caixa, também fecha
+  modal.addEventListener('click', (e) => {
+    const r = modal.getBoundingClientRect();
+    const inside =
+      e.clientX >= r.left && e.clientX <= r.right &&
+      e.clientY >= r.top && e.clientY <= r.bottom;
+    if (!inside) modal.close();
+  });
+
+  // enviar o formulário
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const data = new FormData(form);
+    data.append('_subject', 'Novo contato de parceria - Site AHAU');
+    data.append('_captcha', 'false');
+    data.append('_template', 'table');
+
+    button.disabled = true;
+    status.className = 'form-status';
+    status.textContent = 'Enviando...';
+
+    try {
+      const response = await fetch(ENDPOINT, {
+        method: 'POST',
+        headers: { Accept: 'application/json' },
+        body: data
+      });
+      const result = await response.json();
+
+      if (!response.ok || String(result.success) === 'false') {
+        throw new Error(result.message || 'Erro no envio');
+      }
+
+      status.textContent = 'Mensagem enviada! Obrigado, entraremos em contato em breve. ☀';
+      status.classList.add('success');
+      form.reset();
+      setTimeout(() => modal.close(), 2500);
+    } catch (err) {
+      status.textContent = 'Não foi possível enviar agora. Escreva para filhosdosol010@gmail.com ou chame a gente no Instagram.';
+      status.classList.add('error');
+    } finally {
+      button.disabled = false;
+    }
+  });
 }

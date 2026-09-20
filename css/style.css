@@ -736,47 +736,6 @@ a.competition-card {
   transform: translateY(-3px);
 }
 
-/* ==========================================
-   Quote Rotator
-   ========================================== */
-.quote-section {
-  background-color: var(--color-primary);
-  color: var(--color-text-light);
-  padding: var(--spacing-xl) 0;
-  text-align: center;
-}
-
-.quote-text {
-  font-family: 'Playfair Display', serif;
-  font-style: italic;
-  font-size: 2rem;
-  font-weight: 600;
-  color: var(--color-text-light);
-  max-width: 800px;
-  margin: 0 auto var(--spacing-sm);
-  min-height: 2.4em;
-}
-
-.quote-author {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.1rem;
-  letter-spacing: 1px;
-  color: var(--color-text-light);
-  opacity: 0.9;
-}
-
-.quote-cursor {
-  display: inline-block;
-  width: 2px;
-  background-color: var(--color-text-light);
-  margin-left: 2px;
-  animation: blink 0.8s infinite;
-}
-
-@keyframes blink {
-  0%, 50% { opacity: 1; }
-  51%, 100% { opacity: 0; }
-}
 
 /* ==========================================
    Botão de tema
@@ -831,10 +790,7 @@ section,
 [data-theme="dark"] .logo,
 [data-theme="dark"] .nav-link,
 [data-theme="dark"] .menu-toggle,
-[data-theme="dark"] .theme-toggle,
-[data-theme="dark"] .quote-section,
-[data-theme="dark"] .quote-text,
-[data-theme="dark"] .quote-author {
+[data-theme="dark"] .theme-toggle {
   color: var(--color-on-primary);
 }
 
@@ -849,9 +805,6 @@ section,
   color: var(--color-primary);
 }
 
-[data-theme="dark"] .quote-cursor {
-  background-color: var(--color-on-primary);
-}
 
 /* Cinzas fixos do tema claro */
 [data-theme="dark"] .about-text p,
@@ -884,4 +837,304 @@ section,
   background-color: var(--color-bg);
   color: var(--color-text-dark);
   border-color: #3a3a52;
+}
+
+/* ==========================================
+   Contagem regressiva
+   ========================================== */
+.countdown {
+  padding: 5rem 0;
+  background-color: var(--color-bg);
+  text-align: center;
+}
+
+.countdown-event {
+  margin-bottom: var(--spacing-lg);
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+.countdown-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 130px));
+  justify-content: center;
+  gap: var(--spacing-md);
+}
+
+.countdown-item {
+  padding: var(--spacing-md) var(--spacing-sm);
+  background-color: var(--color-white);
+  border-top: 4px solid var(--color-primary);
+  border-radius: var(--radius-md);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.countdown-number {
+  display: block;
+  font-size: 2.6rem;
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--color-primary);
+  font-variant-numeric: tabular-nums;
+}
+
+.countdown-label {
+  display: block;
+  margin-top: var(--spacing-xs);
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--color-text-dark);
+}
+
+.countdown-finished {
+  margin-top: var(--spacing-lg);
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+@media (max-width: 480px) {
+  .countdown-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .countdown-number {
+    font-size: 2.2rem;
+  }
+}
+
+/* ==========================================
+   Seja parceiro
+   ========================================== */
+.partners {
+  padding: 5rem 0;
+  background-color: var(--color-bg);
+}
+
+.partners-intro {
+  max-width: 700px;
+  margin: 0 auto var(--spacing-lg);
+  text-align: center;
+  opacity: 0.85;
+}
+
+.partners-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
+}
+
+.partner-card {
+  padding: var(--spacing-lg) var(--spacing-md);
+  text-align: center;
+  background-color: var(--color-white);
+  border-radius: var(--radius-md);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: transform var(--transition-base);
+}
+
+.partner-card:hover {
+  transform: translateY(-6px);
+}
+
+.partner-card h3 {
+  margin-bottom: var(--spacing-xs);
+}
+
+.partner-card p {
+  opacity: 0.85;
+}
+
+.partner-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  margin: 0 auto var(--spacing-sm);
+  font-size: 1.6rem;
+  color: var(--color-white);
+  background-color: var(--color-primary);
+  border-radius: 50%;
+}
+
+.partners-benefits {
+  max-width: 700px;
+  margin: 0 auto var(--spacing-lg);
+  padding: var(--spacing-md) var(--spacing-lg);
+  background-color: var(--color-white);
+  border-left: 5px solid var(--color-primary);
+  border-radius: var(--radius-md);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.partners-benefits h3 {
+  margin-bottom: var(--spacing-sm);
+}
+
+.partners-benefits ul {
+  display: grid;
+  gap: var(--spacing-xs);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.partners-benefits li {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-sm);
+}
+
+.partners-benefits li i {
+  margin-top: 0.25em;
+  color: var(--color-primary);
+}
+
+.partners-cta {
+  text-align: center;
+}
+
+.partners-cta p {
+  margin-top: var(--spacing-sm);
+}
+
+.partners-cta p a {
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+/* ==========================================
+   Formulário de parceria (janela)
+   ========================================== */
+.partners-cta .btn {
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  border: 2px solid var(--color-primary);
+}
+
+.partner-modal {
+  margin: auto;
+  width: calc(100% - 2rem);
+  max-width: 520px;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 0;
+  color: var(--color-text-dark);
+  background-color: var(--color-white);
+  border: none;
+  border-radius: var(--radius-md);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+}
+
+.partner-modal::backdrop {
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.partner-modal-close {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.75rem;
+  font-size: 2rem;
+  line-height: 1;
+  color: var(--color-text-dark);
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.partner-modal-close:hover {
+  color: var(--color-primary);
+}
+
+.partner-form {
+  padding: var(--spacing-lg) var(--spacing-md) var(--spacing-md);
+}
+
+.partner-form h3 {
+  margin-bottom: var(--spacing-sm);
+  text-align: center;
+}
+
+.form-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin-bottom: var(--spacing-sm);
+}
+
+.form-row label {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.form-row input,
+.form-row textarea {
+  width: 100%;
+  padding: 0.7rem 0.9rem;
+  font: inherit;
+  color: var(--color-text-dark);
+  background-color: var(--color-bg);
+  border: 2px solid #ddd;
+  border-radius: var(--radius-md);
+}
+
+.form-row input:focus,
+.form-row textarea:focus {
+  outline: none;
+  border-color: var(--color-primary);
+}
+
+.form-row textarea {
+  resize: vertical;
+}
+
+.form-honey {
+  position: absolute;
+  left: -9999px;
+}
+
+.partner-form .btn {
+  width: 100%;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  border: 2px solid var(--color-primary);
+}
+
+.partner-form .btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.form-status {
+  min-height: 1.4em;
+  margin-top: var(--spacing-sm);
+  text-align: center;
+  font-weight: 600;
+}
+
+.form-status.success {
+  color: #2e7d32;
+}
+
+.form-status.error {
+  color: #c62828;
+}
+
+[data-theme="dark"] .form-row input,
+[data-theme="dark"] .form-row textarea {
+  border-color: #3a3a52;
+}
+
+[data-theme="dark"] .form-status.success {
+  color: #66bb6a;
+}
+
+[data-theme="dark"] .form-status.error {
+  color: #ef5350;
 }

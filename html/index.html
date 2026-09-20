@@ -34,18 +34,18 @@
           <li><a href="#contact" class="nav-link">Contato</a></li>
         </ul>
       </nav>
-   <div class="header-actions">
+      <div class="header-actions">
         <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Ativar modo noturno" aria-pressed="false">
           <i class="fas fa-moon"></i>
         </button>
         <button class="menu-toggle" aria-label="Toggle menu">
           <i class="fas fa-bars"></i>
         </button>
-    </div>
+      </div>
     </div>
   </header>
 
-  <section home" class="hero">
+  <section id="home" class="hero">
     <div class="container">
       <div class="hero-content">
         <a href="#about" class="btn btn-primary hero-btn">Conheça Nossa Equipe</a>
@@ -223,6 +223,33 @@
     </div>
   </section>
 
+    <section id="proxima-competicao" class="countdown">
+    <div class="container">
+      <h2 class="section-title">Próxima Competição</h2>
+      <!-- EDITE: o nome da competição abaixo e a data/hora em data-date (formato AAAA-MM-DDTHH:MM:SS-03:00) -->
+      <p class="countdown-event">MNR Etapa Nacional</p>
+      <div class="countdown-grid" id="countdown" data-date="2026-11-23T00:00:00-03:00" role="timer" aria-label="Tempo restante para a competição">
+        <div class="countdown-item">
+          <span class="countdown-number" id="cd-days">00</span>
+          <span class="countdown-label">Dias</span>
+        </div>
+        <div class="countdown-item">
+          <span class="countdown-number" id="cd-hours">00</span>
+          <span class="countdown-label">Horas</span>
+        </div>
+        <div class="countdown-item">
+          <span class="countdown-number" id="cd-minutes">00</span>
+          <span class="countdown-label">Minutos</span>
+        </div>
+        <div class="countdown-item">
+          <span class="countdown-number" id="cd-seconds">00</span>
+          <span class="countdown-label">Segundos</span>
+        </div>
+      </div>
+      <p class="countdown-finished" id="countdown-finished" hidden>Chegou o grande dia! Torça com a gente ☀</p>
+    </div>
+  </section>
+
   <section id="team" class="team">
     <div class="container">
       <h2 class="section-title">Nossa Equipe</h2>
@@ -315,11 +342,76 @@
     </div>
   </section>
 
-    <section id="quote" class="quote-section">
+  <section id="partners" class="partners">
     <div class="container">
-    <blockquote class="quote-text" id="quote-text"></blockquote>
-    <p class="quote-author" id="quote-author"></p>
-   </div>
+      <h2 class="section-title">Seja Parceiro</h2>
+      <p class="partners-intro">Somos uma equipe de garagem, e tudo o que construímos nasce de dedicação e criatividade. Com o seu apoio, levamos a AHAU e a Paraíba ainda mais longe na robótica.</p>
+
+      <div class="partners-grid">
+        <div class="partner-card">
+          <div class="partner-icon">
+            <i class="fas fa-microchip"></i>
+          </div>
+          <h3>Peças e materiais</h3>
+          <p>Sensores, motores, baterias e componentes para construir e melhorar os nossos robôs.</p>
+        </div>
+        <div class="partner-card">
+          <div class="partner-icon">
+            <i class="fas fa-ticket"></i>
+          </div>
+          <h3>Inscrições</h3>
+          <p>Ajuda com as taxas de inscrição para participar de competições.</p>
+        </div>
+        <div class="partner-card">
+          <div class="partner-icon">
+            <i class="fas fa-bus"></i>
+          </div>
+          <h3>Transporte e hospedagem</h3>
+          <p>Apoio para levar a equipe até as competições fora de João Pessoa.</p>
+        </div>
+      </div>
+
+      <div class="partners-benefits">
+        <h3>O que o parceiro recebe</h3>
+        <ul>
+          <li><i class="fas fa-check"></i> Sua logo no site da equipe</li>
+          <li><i class="fas fa-check"></i> Sua marca nos uniformes e nos robôs</li>
+          <li><i class="fas fa-check"></i> Divulgação nas nossas redes sociais</li>
+          <li><i class="fas fa-check"></i> Agradecimento público e certificado de apoio</li>
+        </ul>
+      </div>
+
+      <div class="partners-cta">
+        <button type="button" class="btn btn-primary" id="open-partner-form">Quero apoiar a AHAU</button>
+        <p>Prefere o Instagram? Chame a gente em <a href="https://instagram.com/equipe_ahau" target="_blank" rel="noopener noreferrer">@equipe_ahau</a></p>
+      </div>
+
+      <dialog class="partner-modal" id="partner-modal" aria-labelledby="partner-modal-title">
+        <button type="button" class="partner-modal-close" id="partner-modal-close" aria-label="Fechar">&times;</button>
+        <form class="partner-form" id="partner-form">
+          <h3 id="partner-modal-title">Quero apoiar a AHAU</h3>
+          <div class="form-row">
+            <label for="pf-name">Nome</label>
+            <input type="text" id="pf-name" name="Nome" required autofocus>
+          </div>
+          <div class="form-row">
+            <label for="pf-email">Seu e-mail</label>
+            <input type="email" id="pf-email" name="email" required>
+          </div>
+          <div class="form-row">
+            <label for="pf-company">Empresa ou instituição (opcional)</label>
+            <input type="text" id="pf-company" name="Empresa">
+          </div>
+          <div class="form-row">
+            <label for="pf-message">Mensagem</label>
+            <textarea id="pf-message" name="Mensagem" rows="4" required></textarea>
+          </div>
+          <input type="text" name="_honey" class="form-honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <button type="submit" class="btn btn-primary" id="partner-submit">Enviar mensagem</button>
+          <p class="form-status" id="partner-status" role="status" aria-live="polite"></p>
+        </form>
+      </dialog>
+    </div>
   </section>
 
   <section id="contact" class="contact">
@@ -354,6 +446,7 @@
           <li><a href="#home">Início</a></li>
           <li><a href="#about">Sobre</a></li>
           <li><a href="#projects">Projetos</a></li>
+          <li><a href="#partners">Parceiros</a></li>
         </ul>
       </div>
 
