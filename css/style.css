@@ -134,7 +134,7 @@ body {
   align-items: flex-end;
   justify-content: center;
   padding-bottom: var(--spacing-2xl);
-  background: url('https://i.postimg.cc/KvrPGZd5/equipe-ahau.jpg') no-repeat center 70%/cover;
+  background: url('https://i.postimg.cc/g2VD6d10/IMG-20260915-WA0085.jpg') no-repeat center 50%/cover;
 }
 
 .hero-content {
@@ -604,63 +604,6 @@ a.competition-card {
   transform: translateY(-2px);
 }
 
-/* ==========================================
-   Footer
-   ========================================== */
-.footer {
-  background: var(--color-bg-dark);
-  color: var(--color-text-light);
-  padding: var(--spacing-xl) 0 var(--spacing-md);
-}
-
-.footer-content {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: var(--spacing-lg);
-  margin-bottom: var(--spacing-lg);
-}
-
-.footer-logo h2 {
-  font-size: 1.5rem;
-  margin-bottom: var(--spacing-xs);
-}
-
-.footer-logo p {
-  opacity: 0.8;
-}
-
-.footer-links h3 {
-  font-size: 1.1rem;
-  margin-bottom: var(--spacing-sm);
-}
-
-.footer-links ul {
-  list-style: none;
-}
-
-.footer-links li {
-  margin-bottom: var(--spacing-xs);
-}
-
-.footer-links a {
-  color: var(--color-text-light);
-  text-decoration: none;
-  opacity: 0.8;
-  transition: opacity var(--transition-base);
-}
-
-.footer-links a:hover {
-  opacity: 1;
-}
-
-.footer-bottom {
-  text-align: center;
-  padding-top: var(--spacing-md);
-  border-top: 1px solid rgba(201, 95, 10, 0.4);
-  font-size: 0.9rem;
-  opacity: 0.7;
-}
 
 /* ==========================================
    Responsive Design
@@ -1137,4 +1080,40 @@ section,
 
 [data-theme="dark"] .form-status.error {
   color: #ef5350;
+}
+
+/* ==========================================
+   Team Section
+   ========================================== */
+   .countdown-details {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.countdown-time {
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+}
+
+.map-title {
+  font-size: 1.3rem;
+  color: #444;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+.map-container {
+  width: 100%;       /* Ocupa a largura toda disponível */
+  max-width: 1000px; /* Limita para não ficar demasiado largo em ecrãs gigantes */
+  height: 300px;     /* Define a altura horizontal do mapa */
+  margin: 0 auto;    /* Centraliza o mapa */
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.map-container iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
 }
