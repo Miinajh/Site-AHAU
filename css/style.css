@@ -1182,3 +1182,253 @@ section,
     grid-template-columns: 1fr;
   }
 }
+
+/* ==========================================
+   RESPONSIVIDADE MOBILE - SITE AHAU
+   ========================================== */
+
+@media (max-width: 768px) {
+
+    /* Ajustes gerais */
+    .container {
+        width: 100%;
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    section {
+        padding: 60px 0;
+    }
+
+    .section-title {
+        font-size: 1.8rem;
+        padding: 0 10px;
+        margin-bottom: 30px;
+    }
+
+    /* Cabeçalho */
+    .header {
+        padding: 12px 0;
+    }
+
+    .header-container {
+        gap: 10px;
+    }
+
+    .logo h1 {
+        font-size: 1.25rem;
+    }
+
+    .header-actions {
+        gap: 8px;
+        flex-shrink: 0;
+    }
+
+    .theme-toggle {
+        width: 36px;
+        height: 36px;
+    }
+
+    /* Menu mobile */
+    .nav-list {
+        width: min(260px, 85vw);
+        right: -100%;
+        top: 65px;
+        height: calc(100dvh - 65px);
+        padding: 25px 15px;
+        align-items: stretch;
+    }
+
+    .nav-link {
+        display: block;
+        text-align: center;
+    }
+
+    /* Capa */
+    .hero {
+        min-height: 100svh;
+        background-position: center center;
+        padding-bottom: 80px;
+    }
+
+    .hero-btn {
+        font-size: 0.95rem;
+        padding: 12px 22px;
+    }
+
+    /* Sobre nós */
+    .about-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .about-text p {
+        font-size: 1rem;
+    }
+
+    .about-image img {
+        width: 100%;
+        height: auto;
+    }
+
+    /* Estatísticas */
+    .about .stats-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 8px;
+    }
+
+    .about .stat-item {
+        padding: 15px 5px;
+    }
+
+    .about .stat-number {
+        font-size: 1.6rem;
+    }
+
+    .about .stat-label {
+        font-size: 0.65rem;
+        letter-spacing: 0;
+    }
+
+    /* Valores */
+    .values-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 25px 15px;
+    }
+
+    .mission-text {
+        font-size: 1rem;
+        padding: 0 5px;
+    }
+
+    /* Projetos */
+    .projects-grid {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 25px;
+    }
+
+    .project-card {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .project-image {
+        height: 210px;
+    }
+
+    /* MACHOMAR */
+    .featured-project-content {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 20px;
+    }
+
+    .featured-project-image img {
+        width: 100%;
+        height: auto;
+    }
+
+    .featured-project-text p {
+        font-size: 1rem;
+        line-height: 1.7;
+        text-align: left;
+    }
+
+    /* Competições */
+    .competitions-grid {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 20px;
+    }
+
+    /* Equipe */
+    .team-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 15px;
+    }
+
+    .team-member {
+        padding: 18px 10px;
+        min-width: 0;
+    }
+
+    .member-photo {
+        width: 100px;
+        height: 100px;
+    }
+
+    .team-member h3 {
+        font-size: 1rem;
+    }
+
+    /* Contagem regressiva */
+    .countdown-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+    }
+
+    .countdown-item {
+        padding: 18px 8px;
+    }
+
+    .countdown-number {
+        font-size: 2rem;
+    }
+
+    .countdown-label {
+        font-size: 0.7rem;
+    }
+
+    /* Mapa */
+    .map-container {
+        width: 100%;
+        height: 250px;
+    }
+
+    /* Parceiros */
+    .partners-grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .partners-benefits {
+        padding: 20px 15px;
+    }
+
+    /* Contato */
+    .contact-item {
+        font-size: 0.9rem;
+        gap: 12px;
+        overflow-wrap: anywhere;
+    }
+
+    .contact-item p {
+        min-width: 0;
+    }
+
+    /* Modal */
+    .partner-modal {
+        max-width: calc(100% - 24px);
+    }
+
+    .partner-form {
+        padding: 45px 18px 20px;
+    }
+}
+
+/* Celulares muito pequenos */
+@media (max-width: 360px) {
+
+    .logo h1 {
+        font-size: 1.1rem;
+    }
+
+    .team-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .about .stat-number {
+        font-size: 1.35rem;
+    }
+
+    .section-title {
+        font-size: 1.6rem;
+    }
+}
