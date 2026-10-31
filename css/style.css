@@ -1117,3 +1117,68 @@ section,
   height: 100%;
   border: 0;
 }
+
+/* ==========================================
+   Grandes Projetos (destaque MNR)
+   ========================================== */
+.featured-project {
+  margin-top: var(--spacing-xl);
+  padding-top: var(--spacing-xl);
+  border-top: 2px solid var(--color-bg);
+}
+
+.featured-project-title {
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-lg);
+}
+
+.featured-project-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-xl);
+  align-items: center;
+}
+
+.featured-project-image img {
+  width: 100%;
+  border-radius: var(--radius-sm);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.featured-project-text h4 {
+  font-size: 1.4rem;
+  margin-bottom: var(--spacing-sm);
+  color: var(--color-text-dark);
+}
+
+.featured-project-text p {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: #444;
+  margin-bottom: var(--spacing-md);
+}
+
+.featured-project-cta {
+  text-align: center;
+}
+
+.featured-project-cta .btn {
+  display: inline-block;
+}
+
+[data-theme="dark"] .featured-project {
+  border-top-color: var(--color-white);
+}
+
+[data-theme="dark"] .featured-project-text p {
+  color: #c4c4d2;
+}
+
+@media (max-width: 768px) {
+  .featured-project-content {
+    grid-template-columns: 1fr;
+  }
+}
