@@ -1295,7 +1295,10 @@ section,
         grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 25px 15px;
     }
-
+    .dedicaca {
+       justify-content: center;
+    }
+    
     .mission-text {
         font-size: 1rem;
         padding: 0 5px;
@@ -1330,7 +1333,8 @@ section,
     .featured-project-text p {
         font-size: 1rem;
         line-height: 1.7;
-        text-align: left;
+        text-align: center;
+        margin: 1rem 1rem 1rem 1rem
     }
 
     /* Competições */
@@ -1431,4 +1435,17 @@ section,
     .section-title {
         font-size: 1.6rem;
     }
+}
+
+@media (max-width: 768px) {
+  .values-grid.dedicaca {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-items: center;
+  }
+
+  .values-grid.dedicaca .value-item:last-child {
+    grid-column: 1 / -1;
+    justify-self: center;
+  }
 }
